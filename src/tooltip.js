@@ -205,6 +205,14 @@ nv.models.tooltip = function() {
                 left = pos.left + gravityOffset.left,
                 top = pos.top + gravityOffset.top;
 
+            if(tooltip && tooltip[0] && tooltip[0][0]) {
+                var _tooltip = tooltip[0][0];
+                var _bounding = _tooltip.getBoundingClientRect();
+
+                left = left - _bounding.left + Number(_tooltip.style.left.match(/\d+/)[0]);
+                top = top - _bounding.top + Number(_tooltip.style.top.match(/\d+/)[0]);
+            }
+
             // delay hiding a bit to avoid flickering
             if (hidden) {
                 tooltip
@@ -215,16 +223,19 @@ nv.models.tooltip = function() {
                     .style('opacity', 0);
             } else {
                 // using tooltip.style('transform') returns values un-usable for tween
-                var old_translate = 'translate(' + lastPosition.left + 'px, ' + lastPosition.top + 'px)';
+                /*var old_translate = 'translate(' + lastPosition.left + 'px, ' + lastPosition.top + 'px)';
                 var new_translate = 'translate(' + left + 'px, ' + top + 'px)';
-                var translateInterpolator = d3.interpolateString(old_translate, new_translate);
+                var translateInterpolator = d3.interpolateString(old_translate, new_translate);*/
+                var left_translateInterpolator = d3.interpolateString(lastPosition.left + 'px', left + 'px');
+                var top_translateInterpolator = d3.interpolateString(lastPosition.top + 'px', top + 'px');
+
                 var is_hidden = tooltip.style('opacity') < 0.1;
 
                 tooltip
                     .interrupt() // cancel running transitions
                     .transition()
                     .duration(is_hidden ? 0 : duration)
-                    // using tween since some versions of d3 can't auto-tween a translate on a div
+                    /*// using tween since some versions of d3 can't auto-tween a translate on a div
                     .styleTween('transform', function (d) {
                         return translateInterpolator;
                     }, 'important')
@@ -232,7 +243,18 @@ nv.models.tooltip = function() {
                     .styleTween('-webkit-transform', function (d) {
                         return translateInterpolator;
                     })
-                    .style('-ms-transform', new_translate)
+                    .style('-ms-transform', new_translate)*/
+
+                    .styleTween('left', function (d) {
+                        return left_translateInterpolator;
+                    })
+                    .styleTween('top', function (d) {
+                        return top_translateInterpolator;
+                    })
+
+                    //.style('left', left + "px")
+                    //.style('top', top + "px")
+
                     .style('opacity', 1);
             }
 
