@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="../build/nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.js" charset="utf-8"></script>
+    <script src="../build/nv.d3.js"></script>
+    <script src="lib/stream_layers.js"></script>
+
+    <script src="../src/models/dimensionalPie.js"></script>
+    <script src="../src/models/dimensionalPieChart.js"></script>
+    <link href="../src/css/dimensionalPie.css" rel="stylesheet" type="text/css">
+
+    <style>
+        text {
+            font: 12px sans-serif;
+        }
+        .testBlock {
+            display: block;
+            float: left;
+            height: 300px;
+            width: 300px;
+            border: 1px solid #CCC;
+        }
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="testBlock"><svg id="test1"></svg></div>
+
+<script>
+
+    var testdata = [
+        {name: "Test1", value: [{x:0 ,y: 11}]},
+        {name: "Test2", value: [{x:1 ,y: 22}]},
+        {name: "Test3", value: [{x:2 ,y: 33}]},
+    ];
+
+    var width = 300;
+    var height = 300;
+    var chart;
+
+    nv.addGraph(function() {
+        chart = nv.models.dimensionalPieChart()
+                .x(function(d) { return d.name })
+                .y(function(d) { return d.value[0].y; })
+                .width(width)
+                .height(height)
+                .labelType('key')
+                .options({
+                    duration: 500
+                });
+        ;
+
+        d3.select("#test1")
+                .datum(testdata)
+                .transition()
+                .attr('width', width)
+                .attr('height', height)
+                .call(chart);
+        return chart;
+    });
+</script>
+</body>
+</html>

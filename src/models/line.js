@@ -121,7 +121,8 @@ nv.models.line = function() {
                         .interpolate(interpolate)
                         .defined(defined)
                         .x(function(d,i) { return nv.utils.NaNtoZero(x0(getX(d,i))) })
-                        .y0(function(d,i) { return nv.utils.NaNtoZero(y0(getY(d,i))) })
+                        //.y0(function(d,i) { return nv.utils.NaNtoZero(y0(getY(d,i))) })
+                        .y0(function(d,i) { return nv.utils.NaNtoZero(y0(0)) })
                         .y1(function(d,i) { return y0( y.domain()[0] <= 0 ? y.domain()[1] >= 0 ? 0 : y.domain()[1] : y.domain()[0] ) })
                         //.y1(function(d,i) { return y0(0) }) //assuming 0 is within y domain.. may need to tweak this
                         .apply(this, [d.values])
@@ -151,7 +152,8 @@ nv.models.line = function() {
                     .interpolate(interpolate)
                     .defined(defined)
                     .x(function(d,i) { return nv.utils.NaNtoZero(x0(getX(d,i))) })
-                    .y(function(d,i) { return nv.utils.NaNtoZero(y0(getY(d,i))) })
+                    //.y(function(d,i) { return nv.utils.NaNtoZero(y0(getY(d,i))) })
+                    .y(function(d,i) { return nv.utils.NaNtoZero(y0(0)); })
             );
 
             linePaths.watchTransition(renderWatch, 'line: linePaths')

@@ -1,0 +1,14 @@
+.nvd3.nv-dimensional-pie .nv-slice {
+	stroke: #FFFFFF;
+	stroke-width: 2px;
+}
+
+.nvd3.nv-dimensional-pie .nv-label {
+	pointer-events: none;
+	fill: #FFFFFF;
+}
+
+.nvd3.nv-dimensional-pie .nv-label text {
+	alignment-baseline: central;
+	text-anchor: middle;
+}
