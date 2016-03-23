@@ -52,6 +52,9 @@ nv.models.dimensionalPie = function() {
             var wrapEnter = wrap.enter().append('g').attr('class','nvd3 nv-wrap nv-dimensional-pie');
             wrapEnter.append('g').attr('class', 'nv-pie').attr('transform', 'translate(' + availableWidth / 2 + ',' + availableHeight / 2 + ')');
             wrapEnter.append('g').attr('class', 'nv-labels').attr('transform', 'translate(' + availableWidth / 2 + ',' + availableHeight / 2 + ')');
+            wrap.selectAll('.nv-pie, .nv-labels').transition().duration(duration)
+                .attr('transform', 'translate(' + availableWidth / 2 + ',' + availableHeight / 2 + ')');
+            ;
 
             // =================================================
             // =                     Graph                     =
