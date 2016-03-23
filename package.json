@@ -1,6 +1,6 @@
 {
   "name": "zombiej-nvd3",
-  "version": "1.8.2-2",
+  "version": "1.8.2-3",
   "description": "A reusable charting library written in d3.js",
   "url": "https://github.com/zombiej/nvd3",
   "main": "build/nv.d3.js",
