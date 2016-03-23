@@ -1,15 +1,15 @@
 {
-  "name": "nvd3",
-  "version": "1.8.2-dev",
+  "name": "zombiej-nvd3",
+  "version": "1.8.2-2",
   "description": "A reusable charting library written in d3.js",
-  "url": "https://github.com/novus/nvd3",
+  "url": "https://github.com/zombiej/nvd3",
   "main": "build/nv.d3.js",
   "scripts": {
     "test": "grunt"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/novus/nvd3"
+    "url": "https://github.com/zombiej/nvd3"
   },
   "keywords": ["nvd3", "d3", "chart", "graph"],
   "readmeFilename": "README.md",
