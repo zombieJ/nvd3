@@ -1,4 +1,4 @@
-/* nvd3 version 1.8.2-dev (https://github.com/novus/nvd3) 2016-02-05 */
+/* nvd3 version 1.8.2-2 (https://github.com/zombiej/nvd3) 2016-03-23 */
 .nvd3 .nv-axis {
     pointer-events:none;
     opacity: 1;
@@ -164,6 +164,20 @@
 }
 
 
+.nvd3.nv-dimensional-pie .nv-slice {
+	stroke: #FFFFFF;
+	stroke-width: 2px;
+}
+
+.nvd3.nv-dimensional-pie .nv-label {
+	pointer-events: none;
+	fill: #FFFFFF;
+}
+
+.nvd3.nv-dimensional-pie .nv-label text {
+	alignment-baseline: central;
+	text-anchor: middle;
+}
 .nvd3 .nv-legend .nv-disabled rect {
     /*fill-opacity: 0;*/
 }
